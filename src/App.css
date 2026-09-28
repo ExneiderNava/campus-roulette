@@ -1,0 +1,182 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* Distribuye el espacio verticalmente */
+  width: 100%;
+  height: 100%;
+  /* Ocupa toda la altura del #root */
+  padding: 10px 20px;
+  position: relative;
+  overflow: hidden;
+  /* Evita cualquier desbordamiento interno */
+}
+
+/* =========================================
+   Header compacto
+   ========================================= */
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeInDown 0.8s ease-out;
+  flex-shrink: 0;
+  /* No se encoge */
+  margin-bottom: 5px;
+}
+
+.logo {
+  width: 70px;
+  height: auto;
+  margin-bottom: 5px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #fff, #a0c4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.app-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+/* =========================================
+   Contenido principal - Ocupa el espacio central
+   ========================================= */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  /* Ocupa el espacio disponible */
+  position: relative;
+  min-height: 0;
+  /* Permite que flex funcione correctamente */
+  padding-bottom: 60px;
+  /* Espacio para que el botón SPIN no se corte */
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.app-footer {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  text-align: center;
+  width: 100%;
+  padding-top: 5px;
+}
+
+/* =========================================
+   Loading
+   ========================================= */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* =========================================
+   Animaciones
+   ========================================= */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   Responsive - Ajustes para móviles
+   ========================================= */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 8px 10px;
+  }
+
+  .logo {
+    width: 55px;
+  }
+
+  .app-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .app-header p {
+    font-size: 0.7rem;
+  }
+
+  .app-footer {
+    font-size: 0.65rem;
+  }
+
+  .main-content {
+    padding-bottom: 50px;
+  }
+}
+
+/* =========================================
+   Ajustes para pantallas con poca altura
+   ========================================= */
+@media (max-height: 750px) {
+  .logo {
+    width: 55px;
+  }
+
+  .app-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .app-header p {
+    font-size: 0.7rem;
+  }
+
+  .main-content {
+    padding-bottom: 55px;
+  }
+}
+
+@media (max-height: 650px) {
+  .logo {
+    width: 45px;
+  }
+
+  .app-header h1 {
+    font-size: 1rem;
+  }
+
+  .app-header p {
+    display: none;
+    /* Ocultar subtítulo en pantallas muy bajas */
+  }
+
+  .app-footer {
+    display: none;
+    /* Ocultar footer en pantallas muy bajas */
+  }
+
+  .main-content {
+    padding-bottom: 50px;
+  }
+}
