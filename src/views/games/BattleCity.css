@@ -1,0 +1,384 @@
+.bc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+  gap: 14px;
+}
+
+.bc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bc-room-info,
+.bc-round-badge {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.bc-round-badge {
+  background: rgba(0, 123, 255, 0.2);
+  border: 1px solid rgba(0, 123, 255, 0.4);
+  color: #a0c4ff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.pin-badge {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.bc-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.bc-sentence-target {
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 193, 7, 0.4);
+  border-radius: 16px;
+  padding: 14px 24px;
+  text-align: center;
+}
+.bc-sentence-target.small { padding: 10px 18px; }
+.bc-sentence-target .label {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.bc-sentence-target .text {
+  color: #ffc107;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.bc-sentence-target.small .text { font-size: 1rem; }
+
+.bc-teams-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+.bc-team-panel {
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid;
+  border-radius: 14px;
+  padding: 14px;
+}
+.bc-team-panel h3 { margin-bottom: 8px; }
+.bc-team-info {
+  display: flex;
+  gap: 16px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 8px;
+}
+.bc-team-carried {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.bc-placed-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.bc-placed-word {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.bc-placed-word.carrying {
+  background: rgba(255, 193, 7, 0.25);
+  color: #ffc107;
+}
+.bc-complete {
+  color: #81c784;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+/* -------- Field -------- */
+.bc-field {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 55vh;
+  min-height: 320px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2)),
+    radial-gradient(circle at 50% 0%, rgba(255,193,7,0.08), transparent 60%);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.bc-word {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #007bff, #6a0dad);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  z-index: 2;
+}
+.bc-word:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+}
+
+.bc-car {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  z-index: 3;
+  transition: left 0.08s linear, top 0.08s linear;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+.bc-carrying {
+  position: absolute;
+  transform: translate(-50%, -180%);
+  background: #ffc107;
+  color: #0a192f;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.bc-placed {
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+.bc-placed .label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.bc-pilot-hint,
+.bc-voter-hint {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.bc-my-team {
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.bc-my-team.red { border-color: #d32f2f; }
+.bc-my-team.blue { border-color: #007bff; }
+
+.bc-team-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.bc-team-badge.red {
+  background: rgba(211, 47, 47, 0.2);
+  border: 1px solid #d32f2f;
+}
+.bc-team-badge.blue {
+  background: rgba(0, 123, 255, 0.2);
+  border: 1px solid #007bff;
+}
+
+.bc-round-result {
+  text-align: center;
+  background: rgba(46, 125, 50, 0.15);
+  border: 1px solid #2e7d32;
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: #81c784;
+  font-weight: bold;
+}
+
+/* -------- Buttons -------- */
+.bc-btn {
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 180px;
+}
+.bc-btn.primary {
+  background: linear-gradient(135deg, #007bff, #6a0dad);
+  color: white;
+}
+.bc-btn.success {
+  background: linear-gradient(135deg, #2e7d32, #007bff);
+  color: white;
+}
+.bc-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+}
+.bc-btn:hover:not(:disabled) { transform: translateY(-2px); }
+.bc-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.bc-btn-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* -------- Ranking -------- */
+.bc-ranking {
+  width: 100%;
+  max-width: 600px;
+}
+.bc-ranking h2 {
+  color: #ffc107;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.bc-ranking-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+.bc-ranking-row.first {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 152, 0, 0.2));
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  font-size: 1.1rem;
+}
+
+.bc-empty {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+/* -------- Modal -------- */
+.bc-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+.bc-modal {
+  background: #0f1e3a;
+  border: 2px solid #ffc107;
+  border-radius: 20px;
+  padding: 28px 32px;
+  max-width: 560px;
+  width: 100%;
+  color: white;
+}
+.bc-modal h2 {
+  color: #ffc107;
+  margin-bottom: 14px;
+}
+.bc-modal ol {
+  padding-left: 22px;
+  line-height: 1.7;
+}
+.bc-modal code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 5px;
+  color: #ffc107;
+}
+.bc-modal-tip {
+  background: rgba(255, 193, 7, 0.12);
+  border-left: 4px solid #ffc107;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin: 18px 0;
+}
+.bc-modal-waiting {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.bc-loading {
+  color: white;
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+}
+
+/* -------- Mobile -------- */
+@media (max-width: 700px) {
+  .bc-field { height: 45vh; min-height: 260px; }
+  .bc-teams-grid { grid-template-columns: 1fr; }
+  .bc-sentence-target .text { font-size: 1rem; }
+  .bc-word { font-size: 0.85rem; padding: 6px 10px; }
+  .bc-car { font-size: 1.6rem; }
+  .bc-btn { min-width: 140px; padding: 10px 20px; font-size: 0.95rem; }
+}
+
+.bc-pilot-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}

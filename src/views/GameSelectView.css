@@ -1,0 +1,122 @@
+.gameselect-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 20px;
+  gap: 30px;
+}
+
+.gameselect-header {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+}
+
+.btn-back {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-3px);
+}
+
+.gameselect-title {
+  text-align: center;
+}
+
+.gameselect-title h1 {
+  font-size: 2rem;
+  margin: 10px 0 5px;
+  background: linear-gradient(to right, #fff, #ffc107);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.gameselect-title p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.pin-badge {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+  color: white;
+  font-family: inherit;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px var(--accent);
+}
+
+.game-emoji {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.game-card h2 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+.game-card p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .gameselect-title h1 { font-size: 1.5rem; }
+  .game-card { padding: 20px 15px; }
+  .game-emoji { font-size: 2.2rem; }
+}
